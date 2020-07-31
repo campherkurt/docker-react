@@ -4,7 +4,7 @@ services:
     - docker
 
 before_install:
-    - docker build -t kurt/react -f Dockerfile .
+    - docker build -t kurt/react -f Dockerfile.dev .
 
 script:
     - docker run -e CI=true  kurt/react npm run test
@@ -12,7 +12,7 @@ script:
 deploy:
     provider: elasticbeanstalk
     region: "us-east-1"
-    app: "docker react"
+    app: "Docker React"
     env: "DockerReact-env"
     bucket_name: "elasticbeanstalk-us-east-1-024016536828"
     bucket_path: "docker react"
